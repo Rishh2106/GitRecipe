@@ -1,4 +1,5 @@
 
+# Exclude non-essential build, IDE, and OS metadata files from version control
 # Maven build artifacts
 backend/target/
 backend/*.log
