@@ -1,0 +1,24 @@
+# Git Ignore
+requirements.txt
+
+# Maven build artifacts
+backend/target/
+backend/*.log
+
+# Image uploads (stay local)
+backend/uploads/
+
+# IDE files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
