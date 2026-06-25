@@ -1,19 +1,19 @@
-# GitRecipe (V1) 🍳
+# GitRecipe (V1)
 
-**GitRecipe** is a modern, interactive web application designed for food lovers and chefs to discover, share, bookmark, and discuss culinary recipes. It features a robust **Spring Boot** REST backend secured with **JWT** and a premium, responsive **HTML/CSS/JS Single-Page Application (SPA)** styled using the custom **Modern-Organic ("Heirloom & Hearth")** design language.
+GitRecipe is a modern, interactive web application designed for food lovers and chefs to discover, share, bookmark, and discuss culinary recipes. It features a robust Spring Boot REST backend secured with JWT and a premium, responsive HTML/CSS/JS Single-Page Application (SPA) styled using the custom Modern-Organic ("Heirloom & Hearth") design language.
 
 ---
 
 ## Key Features
 
-- 🔐 **Stateless Authentication**: Register and login securely. Session persistence and API authentication are managed via JSON Web Tokens (JWT).
-- 📝 **Recipe Management**: Create, edit, and delete recipes. Supports dynamic forms to add ingredients and step-by-step instructions.
-- 🎨 **Modern-Organic Design**: Sun-drenched kitchen aesthetic styled with warm cream backgrounds, custom ambient shadows, rounded container geometry, and high-quality typography (*Plus Jakarta Sans* headings and *Source Serif 4* body text).
-- 🖼️ **Robust Image Uploads**: Upload recipe covers and profile pictures. Integrates with **Cloudinary** for CDN delivery, with a zero-config local disk storage fallback if Cloudinary credentials are not configured.
-- 💬 **Discussion Threads**: Chronological flat comment feeds under recipes, allowing comment owners to edit or delete their posts.
-- ❤️ **Community Engagement**: Toggle likes and save recipes to your private cookbook bookmarks.
-- 🔍 **Universal Search**: Instantly query recipes by title, category, author username, or ingredients.
-- 📖 **Interactive API Documentation**: Out-of-the-box Swagger UI for exploring and testing REST endpoints.
+- **Stateless Authentication**: Register and login securely. Session persistence and API authentication are managed via JSON Web Tokens (JWT).
+- **Recipe Management**: Create, edit, and delete recipes. Supports dynamic forms to add ingredients and step-by-step instructions.
+- **Modern-Organic Design**: Sun-drenched kitchen aesthetic styled with warm cream backgrounds, custom ambient shadows, rounded container geometry, and high-quality typography (Plus Jakarta Sans headings and Source Serif 4 body text).
+- **Robust Image Uploads**: Upload recipe covers and profile pictures. Integrates with Cloudinary for CDN delivery, with a zero-config local disk storage fallback if Cloudinary credentials are not configured.
+- **Discussion Threads**: Chronological flat comment feeds under recipes, allowing comment owners to edit or delete their posts.
+- **Community Engagement**: Toggle likes and save recipes to your private cookbook bookmarks.
+- **Universal Search**: Instantly query recipes by title, category, author username, or ingredients.
+- **Interactive API Documentation**: Out-of-the-box Swagger UI for exploring and testing REST endpoints.
 
 ---
 
@@ -71,7 +71,7 @@ Ensure that your MySQL server is running, and create a new schema named `gitreci
 ```sql
 CREATE DATABASE gitrecipe;
 ```
-*Note: Hibernate will automatically create and update the database tables (`users`, `recipes`, `ingredients`, `recipe_steps`, `comments`, `recipe_likes`, `saved_recipes`) on startup.*
+*Note: Hibernate will automatically create and update the database tables (users, recipes, ingredients, recipe_steps, comments, recipe_likes, saved_recipes) on startup.*
 
 ### 2. Configure Backend Credentials
 Open [backend/src/main/resources/application.properties](file:///c:/Users/rishi/Desktop/prac/GitRecipe/backend/src/main/resources/application.properties) and customize settings to fit your local environment:
@@ -111,7 +111,7 @@ npx serve frontend/recipe-hub-frontend
 
 ## API Testing & Documentation
 Once the backend is running, explore the fully interactive API docs on:
-👉 **[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)**
+**[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)**
 
 ### Running Automated Tests
 Run compiled test cases to ensure the project works:
