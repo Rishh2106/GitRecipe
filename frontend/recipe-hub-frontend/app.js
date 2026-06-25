@@ -67,7 +67,7 @@ function updateNav() {
         userElements.forEach(el => el.classList.remove('d-none'));
         
         document.getElementById('nav-user-name').textContent = user.name;
-        document.getElementById('nav-user-avatar').src = user.profilePictureUrl || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100';
+        document.getElementById('nav-user-avatar').src = user.profilePictureUrl ? (user.profilePictureUrl.startsWith('/') ? API_BASE_URL + user.profilePictureUrl : user.profilePictureUrl) : 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100';
         document.getElementById('my-profile-link').href = `#profile/${user.username}`;
     } else {
         guestElements.forEach(el => el.classList.remove('d-none'));
@@ -183,8 +183,8 @@ async function renderExplore(container) {
             <!-- Hero Header -->
             ${!state.currentSearch && !state.currentCategory ? `
                 <header class="hero-section">
-                    <h1 class="hero-title">Version Control Your Kitchen</h1>
-                    <p class="hero-subtitle">Discover, bookmark, and share culinary recipes with developers all over the world.</p>
+                    <h1 class="hero-title">Heirloom & Hearth</h1>
+                    <p class="hero-subtitle">Discover, bookmark, and share culinary recipes with food lovers all over the world.</p>
                     ${!state.user ? '<a href="#register" class="btn btn-action-gradient btn-lg px-5 py-3">Get Started Free</a>' : ''}
                 </header>
             ` : ''}
@@ -233,7 +233,7 @@ async function renderExplore(container) {
 function renderRecipeCard(recipe) {
     const isLiked = recipe.likedByCurrentUser;
     const isSaved = recipe.savedByCurrentUser;
-    const imgUrl = recipe.coverImageUrl || 'https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&q=80&w=400';
+    const imgUrl = recipe.coverImageUrl ? (recipe.coverImageUrl.startsWith('/') ? API_BASE_URL + recipe.coverImageUrl : recipe.coverImageUrl) : 'https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&q=80&w=400';
     
     return `
         <div class="col">
@@ -362,7 +362,7 @@ async function renderRecipeDetails(container, recipeId) {
     const res = await api.get(`/api/recipes/${recipeId}`);
     const recipe = res.data;
     const isAuthor = state.user && state.user.username === recipe.authorUsername;
-    const imgUrl = recipe.coverImageUrl || 'https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&q=80&w=800';
+    const imgUrl = recipe.coverImageUrl ? (recipe.coverImageUrl.startsWith('/') ? API_BASE_URL + recipe.coverImageUrl : recipe.coverImageUrl) : 'https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&q=80&w=800';
     
     container.innerHTML = `
         <div class="row animated-view g-5">
@@ -560,7 +560,7 @@ async function renderRecipeDetails(container, recipeId) {
 // Single Comment Item HTML helper
 function renderCommentItem(comment) {
     const isCommentOwner = state.user && state.user.username === comment.authorUsername;
-    const avatar = comment.authorProfilePictureUrl || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100';
+    const avatar = comment.authorProfilePictureUrl ? (comment.authorProfilePictureUrl.startsWith('/') ? API_BASE_URL + comment.authorProfilePictureUrl : comment.authorProfilePictureUrl) : 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100';
     
     return `
         <div class="comment-box">
@@ -935,7 +935,7 @@ async function renderProfile(container, username) {
     const userRecipes = recipesRes.data.filter(r => r.authorUsername === username);
     
     const defaultBigAvatar = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200';
-    const avatar = profile.profilePictureUrl || defaultBigAvatar;
+    const avatar = profile.profilePictureUrl ? (profile.profilePictureUrl.startsWith('/') ? API_BASE_URL + profile.profilePictureUrl : profile.profilePictureUrl) : defaultBigAvatar;
     const isCurrentUser = state.user && state.user.username === username;
     
     container.innerHTML = `
@@ -1007,7 +1007,7 @@ async function renderSettings(container) {
                 <!-- Avatar upload -->
                 <div class="mb-4 text-center">
                     <label class="form-label d-block mb-3">Profile Picture</label>
-                    <img src="${user.profilePictureUrl || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150'}" 
+                    <img src="${user.profilePictureUrl ? (user.profilePictureUrl.startsWith('/') ? API_BASE_URL + user.profilePictureUrl : user.profilePictureUrl) : 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150'}" 
                          alt="Avatar" class="profile-avatar-big mb-3 d-block" id="settings-avatar-preview">
                     
                     <input type="file" id="avatar-file-input" accept="image/*" class="d-none">
